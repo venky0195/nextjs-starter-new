@@ -1,3 +1,4 @@
-export default async function handlers(request, context) {
+export default async function handler(request, context) {
+    asd;
     return;
 }
