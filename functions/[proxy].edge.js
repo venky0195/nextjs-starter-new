@@ -1,4 +1,4 @@
 export default async function handler(request, context) {
-    asd;
+    console.log("Hello from edge");
     return;
 }
