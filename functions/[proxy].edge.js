@@ -1,4 +1,4 @@
-export default async function handler(request, context) {
-    console.log("Hello from edge");
-    return;
-}
+export default function handler(request, context) {
+    console.log("hello from edge");
+   return fetch(request)
+ }
