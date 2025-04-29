@@ -1,24 +1,31 @@
 export default async function handler(request, context) {
   const edgeStart = Date.now();
 
-  // Clone and modify headers
   const headers = new Headers(request.headers);
   headers.set("x-start-time", edgeStart.toString());
 
-  const modifiedRequest = new Request(request, { headers });
+  let url = new URL(request.url);
 
-  // Get the URL from the request
-  const url = new URL(modifiedRequest.url);
-
-  // Check and modify host if needed
-  if (url.host === 'nextjs-starter-new.eu-contentstackapps.com') {
-    url.host = 'nextjs-starter-new.eu-gcpgcontentstackapps.com';
-  } else if (url.host === 'nextjs-starter-new.eu-gcpgcontentstackapps.com') {
-    url.host = 'nextjs-starter-new.eu-contentstackapps.com';
+  if (url.hostname === "nextjs-starter-new.eu-gcpcontentstackapps.com") {
+    url.hostname = "nextjs-starter-new.eu-contentstackapps.com";
+  } else if (url.hostname === "nextjs-starter-new.eu-contentstackapps.com") {
+    url.hostname = "nextjs-starter-new.eu-gcpcontentstackapps.com";
   }
 
-  // Create new request with modified URL
-  modifiedRequest = new Request(url, modifiedRequest);
+  const modifiedRequest = new Request(url.toString(), {
+    method: request.method,
+    headers,
+    body: request.body,
+    redirect: request.redirect,
+    credentials: request.credentials,
+    cache: request.cache,
+    mode: request.mode,
+    referrer: request.referrer,
+    referrerPolicy: request.referrerPolicy,
+    integrity: request.integrity,
+    keepalive: request.keepalive,
+  });
+
   const response = await fetch(modifiedRequest);
 
   const fetchLatency = Date.now() - edgeStart;
