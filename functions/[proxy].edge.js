@@ -1,19 +1,10 @@
 export default async function handler(request, context) {
   const edgeStart = Date.now();
+  // Get the URL and append timestamp query parameter
+  const url = new URL(request.url);
+  url.searchParams.set('t', edgeStart.toString());
 
-  const headers = new Headers(request.headers);
-  headers.set("x-start-time", edgeStart.toString());
-
-  let url = new URL(request.url);
-
-  if (url.hostname === "nextjs-starter-new.eu-contentstackapps.com") {
-    url.hostname = "nextjs-starter-new.eu-gcpcontentstackapps.com";
-  } 
-  // else if (url.hostname === "nextjs-starter-new.eu-contentstackapps.com") {
-  //   url.hostname = "nextjs-starter-new.eu-gcpcontentstackapps.com";
-  // }
-
-  const modifiedRequest = new Request(url.toString(), request);
+  const modifiedRequest = new Request(url, request);
 
   const response = await fetch(modifiedRequest);
 
