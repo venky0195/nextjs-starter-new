@@ -6,9 +6,7 @@ export async function GET(request) {
   return new Response(
     JSON.stringify({
       message: "helloworld!",
-      edgeLatency: edgeLatency ? `${edgeLatency} ms` : "unknown",
       functionLatency: `${totalLatency} ms`,
-      totalLatency: edgeLatency ? `${edgeLatency + totalLatency} ms` : "unknown"
     }),
     {
       status: 200,
