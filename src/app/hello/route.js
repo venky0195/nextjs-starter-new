@@ -9,7 +9,8 @@ export async function GET(request) {
     JSON.stringify({
       message: "helloworld!",
       functionLatency: `${totalLatency} ms`,
-      ISOString: new Date().toISOString(),
+      EdgeRequestReceivedTimestamp: url.searchParams.get('t'),
+      cloudfunctionTimestamp: Date.now(),
     }),
     {
       status: 200,

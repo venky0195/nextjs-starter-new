@@ -9,6 +9,7 @@ export default async function handler(request, context) {
   const modifiedRequest = new Request(url, request);
 
   const response = await fetch(modifiedRequest);
+  console.log('Response:', JSON.stringify({response: await response.json(), EdgeResponseReceivedtimestamp: Date.now()}));
 
   const fetchLatency = Date.now() - edgeStart;
   console.log(`Edge Fetch Latency: ${fetchLatency} ms`);
