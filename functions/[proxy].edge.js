@@ -6,8 +6,8 @@ export default async function handler(request, context) {
 
   let url = new URL(request.url);
 
-  if (url.hostname === "nextjs-starter-new.eu-gcpcontentstackapps.com") {
-    url.hostname = "nextjs-starter-new.eu-contentstackapps.com";
+  if (url.hostname === "nextjs-starter-new.eu-contentstackapps.com") {
+    url.hostname = "nextjs-starter-new.eu-gcpcontentstackapps.com";
   } 
   // else if (url.hostname === "nextjs-starter-new.eu-contentstackapps.com") {
   //   url.hostname = "nextjs-starter-new.eu-gcpcontentstackapps.com";
