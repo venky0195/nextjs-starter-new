@@ -12,19 +12,7 @@ export default async function handler(request, context) {
     url.hostname = "nextjs-starter-new.eu-gcpcontentstackapps.com";
   }
 
-  const modifiedRequest = new Request(url.toString(), {
-    method: request.method,
-    headers,
-    body: request.body,
-    redirect: request.redirect,
-    credentials: request.credentials,
-    cache: request.cache,
-    mode: request.mode,
-    referrer: request.referrer,
-    referrerPolicy: request.referrerPolicy,
-    integrity: request.integrity,
-    keepalive: request.keepalive,
-  });
+  const modifiedRequest = new Request(url.toString(), request);
 
   const response = await fetch(modifiedRequest);
 
