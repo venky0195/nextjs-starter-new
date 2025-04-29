@@ -8,9 +8,10 @@ export default async function handler(request, context) {
 
   if (url.hostname === "nextjs-starter-new.eu-gcpcontentstackapps.com") {
     url.hostname = "nextjs-starter-new.eu-contentstackapps.com";
-  } else if (url.hostname === "nextjs-starter-new.eu-contentstackapps.com") {
-    url.hostname = "nextjs-starter-new.eu-gcpcontentstackapps.com";
-  }
+  } 
+  // else if (url.hostname === "nextjs-starter-new.eu-contentstackapps.com") {
+  //   url.hostname = "nextjs-starter-new.eu-gcpcontentstackapps.com";
+  // }
 
   const modifiedRequest = new Request(url.toString(), request);
 
