@@ -4,8 +4,6 @@ import { cookies } from 'next/headers';
 
 const BANNER_COOKIE_NAME = 'promo_banner';
 
-
-
 export const getInitialVisibility = async (publishTime: string, currentTitle?: string, promoBannerType?: string) => {
 
     const cookieStore = await cookies()
