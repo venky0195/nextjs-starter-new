@@ -1,15 +1,15 @@
-export default function handler(req, res) {
-    const startTimeHeader = req.headers["x-start-time"];
-    let latency = null;
-  
-    if (startTimeHeader) {
-      const start = parseInt(startTimeHeader, 10);
-      latency = Date.now() - start;
-      console.log(`Latency from edge to cloud function: ${latency} ms`);
-    } else {
-      console.log("x-start-time header not found");
-    }
-  
-    res.status(200).json({ message: "helloworld!", latency: latency ? `${latency} ms` : "unknown" });
+export default async function handler(req, res) {
+  try {
+      const requestHeaders = req.headers;
+      console.log("req headers from cloud fn-->", requestHeaders);
+
+      res.status(200).json({
+          message: "helloworld!"
+      });
+  } catch (error) {
+      res.status(500).json({
+          message: "Something went wrong",
+          error: JSON.stringify(error)
+      });
   }
-  
+}
