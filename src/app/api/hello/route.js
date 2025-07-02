@@ -5,11 +5,9 @@ export async function GET(req) {
 
     return new Response(
       JSON.stringify({
-        message: "helloworld!",
-        "visitor-ip-country": requestHeaders["x-visitor-ip-country"],
-        "visitor-ip-city": requestHeaders["x-visitor-ip-city"],
-        "visitor-ip-region": requestHeaders["x-visitor-ip-region"],
-      }),
+        message: "helloworld@!",
+        headers: requestHeaders,
+       }),
       {
         status: 200,
         headers: {
