@@ -1,6 +1,7 @@
 export async function GET(req) {
   try {
     console.log("in api route");
+    console.log("before reqheaders");
     const requestHeaders = Object.fromEntries(req.headers.entries());
     console.log("second log");
     console.log(`req headers from Next.js API route --> ${JSON.stringify(requestHeaders)}`);
