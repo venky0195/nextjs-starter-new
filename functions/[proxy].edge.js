@@ -1,7 +1,7 @@
 export default async function handler(request, context) {
   try {
     const requestHeaders = Object.fromEntries(request.headers);
-    console.log("req headers from edge fn-->", requestHeaders)
+    // console.log("req headers from edge fn-->", requestHeaders)
 
     const response = await fetch(request);
 
